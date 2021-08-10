@@ -42,6 +42,7 @@ jobs:
 
     - name: Lint files
       run: |
+        touch output.txt
         echo "```" >> output.txt
         diff-quality --violations sqlfluff --compare-branch remotes/origin/main >> output.txt
         echo "```" >> output.txt
