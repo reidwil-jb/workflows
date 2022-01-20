@@ -1,6 +1,15 @@
-## Lint
+# Jetblue's Linting On Comment Workflow
+Created by @reidwil
+
+
+
+
+To use: Copy the contents of the `lint.yml` into `$REPO_ROOT/.github/workflows/` directory of your github project.
+
+This workflow is used in a github pull request as a comment. The lint _only_ will run if you "trigger" it as a comment inside of a pull request.
 
 The lint.yaml workflow is built for analytics teams who have github repositories for their SQL code ([dbt](https://www.getdbt.com/), [snowchanger](https://github.com/phdata/snowchange/blob/master/snowchange.py)). 
+
 The workflow uses `diff-quality` find **only new** files from a pull request relative to the default branch on the repository (main, master, development). It will lint those files and return a tidy comment on the pull request.
 
 This process currently is dependent on:
@@ -15,18 +24,13 @@ This process currently is dependent on:
   
 ## How To:
 
-To trigger this action you must type `/lint` on a pull request comment. If you want to change the trigger, adjust [here](https://github.com/reidwil-jb/workflows/blob/main/.github/workflows/lint.yml#L21)
+0. Copy lint.yml into `./.github/workflows/`
 
-You should see a rocket 🚀 emote on your comment and subsequently message like:
-````
--------------
-Diff Quality
-Quality Report: sqlfluff
-Diff: remotes/origin/develop...HEAD, staged and unstaged changes
--------------
-models/star/bookings_rt/views/vw_pnr.sql (100%)
--------------
-Total:   49 lines
-Violations: 0 lines
-% Quality: 100%
--------------
+1. Create a PR with sql code
+
+2. Comment on the PR with `/lint` (the specific trigger can be adjusted [here](https://github.com/reidwil-jb/workflows/blob/main/.github/workflows/lint.yml#L21)
+
+3. Sit back and wait for github actions to return the results!
+
+-------------------
+
